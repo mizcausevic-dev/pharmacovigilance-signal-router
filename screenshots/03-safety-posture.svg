@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+    <rect width="1400" height="860" fill="#070a0f"/>
+    <rect x="24" y="24" width="1352" height="812" rx="30" fill="#0a1426" stroke="rgba(120,255,170,.18)"/>
+    <rect x="58" y="58" width="1284" height="152" rx="26" fill="#0b1220" stroke="rgba(120,255,170,.12)"/>
+    <text x="94" y="96" fill="#37ff8b" font-size="13" font-weight="700" font-family="Consolas, monospace">
+<tspan x="94" dy="0">SAFETY POSTURE</tspan>
+</text>
+    <text x="94" y="146" fill="#f5f7ff" font-size="34" font-weight="700" font-family="Georgia, serif">
+<tspan x="94" dy="0">Packet readiness, missing evidence,</tspan>
+<tspan x="94" dy="42">and signal-review timing stay</tspan>
+<tspan x="94" dy="42">readable for biotech operators.</tspan>
+</text>
+    <text x="94" y="194" fill="#b8c6db" font-size="18" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="94" dy="0">The board keeps final pharmacovigilance posture explicit instead of hiding it behind generic safety</tspan>
+<tspan x="94" dy="22">status metrics.</tspan>
+</text>
+    
+    
+    <rect x="58" y="238" width="402" height="244" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="84" y="272" fill="#ff5c7a" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="84" dy="0">PACKET PVSR-14</tspan>
+</text>
+    <text x="84" y="322" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="84" dy="0">Cardiac intake packet</tspan>
+</text>
+    <text x="84" y="374" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="84" dy="0">54 percent ready. Case completeness is still</tspan>
+<tspan x="84" dy="20">missing a confirmed onset date and seriousness</tspan>
+<tspan x="84" dy="20">rationale.</tspan>
+</text>
+    
+    
+    <rect x="498" y="238" width="402" height="244" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="524" y="272" fill="#ffcc66" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="524" dy="0">PACKET PVSR-21</tspan>
+</text>
+    <text x="524" y="322" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="524" dy="0">Hepatic signal packet</tspan>
+</text>
+    <text x="524" y="374" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="524" dy="0">59 percent ready. The aggregate reporting packet</tspan>
+<tspan x="524" dy="20">still lacks the locked case-set export and</tspan>
+<tspan x="524" dy="20">literature addendum.</tspan>
+</text>
+    
+    
+    <rect x="938" y="238" width="404" height="244" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="964" y="272" fill="#37ff8b" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="964" dy="0">PACKET PVSR-30</tspan>
+</text>
+    <text x="964" y="322" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="964" dy="0">Medical review packet</tspan>
+</text>
+    <text x="964" y="374" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="964" dy="0">71 percent ready. Hospitalization criteria and one</tspan>
+<tspan x="964" dy="20">MedDRA coding set still need correction before</tspan>
+<tspan x="964" dy="20">signoff.</tspan>
+</text>
+    
+    
+    <rect x="58" y="514" width="1284" height="262" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="84" y="548" fill="#19c7ff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="84" dy="0">WHY THIS MONETIZES CLEANLY</tspan>
+</text>
+    <text x="84" y="598" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="84" dy="0">Hosted preview planned, paid</tspan>
+<tspan x="84" dy="35">template pack later, embedded</tspan>
+<tspan x="84" dy="35">by engagement.</tspan>
+</text>
+    <text x="84" y="650" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="84" dy="0">This is a strong biotech safety wedge because it</tspan>
+<tspan x="84" dy="20">lives where teams actually feel pressure: case</tspan>
+<tspan x="84" dy="20">intake quality, seriousness review, follow-up</tspan>
+<tspan x="84" dy="20">closure, periodic reporting evidence, and the</tspan>
+<tspan x="84" dy="20">named signal action needed before committee</tspan>
+<tspan x="84" dy="20">closure.</tspan>
+</text>
+    
+    
+    </svg>

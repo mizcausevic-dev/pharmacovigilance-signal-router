@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+    <rect width="1400" height="860" fill="#070a0f"/>
+    <rect x="24" y="24" width="1352" height="812" rx="30" fill="#0a1426" stroke="rgba(120,255,170,.18)"/>
+    <rect x="58" y="58" width="1284" height="152" rx="26" fill="#0b1220" stroke="rgba(120,255,170,.12)"/>
+    <text x="94" y="96" fill="#37ff8b" font-size="13" font-weight="700" font-family="Consolas, monospace">
+<tspan x="94" dy="0">PHARMACOVIGILANCE SIGNAL ROUTER</tspan>
+</text>
+    <text x="94" y="146" fill="#f5f7ff" font-size="34" font-weight="700" font-family="Georgia, serif">
+<tspan x="94" dy="0">Control-plane summary for safety</tspan>
+<tspan x="94" dy="42">signals, case-routing gaps, and</tspan>
+<tspan x="94" dy="42">committee-safe review posture.</tspan>
+</text>
+    <text x="94" y="194" fill="#b8c6db" font-size="18" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="94" dy="0">Case intake completeness, seriousness assessment, MedDRA coding, follow-up pressure, aggregate</tspan>
+<tspan x="94" dy="22">reporting evidence, and named signal actions stay visible together before committee review hardens</tspan>
+<tspan x="94" dy="22">around weak packets.</tspan>
+</text>
+    
+    
+    <rect x="58" y="238" width="288" height="150" rx="20" fill="#111827" stroke="rgba(120,255,170,.14)" />
+    <text x="82" y="272" fill="#8fdcff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="82" dy="0">SIGNAL CLUSTERS</tspan>
+</text>
+    <text x="82" y="324" fill="#19c7ff" font-size="34" font-weight="700" font-family="Segoe UI, Arial">
+<tspan x="82" dy="0">3</tspan>
+</text>
+    <text x="82" y="362" fill="#b8c6db" font-size="15" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="82" dy="0">Synthetic safety-signal</tspan>
+<tspan x="82" dy="18">clusters across active</tspan>
+<tspan x="82" dy="18">intake, follow-up, and</tspan>
+<tspan x="82" dy="18">reporting lanes.</tspan>
+</text>
+    
+    
+    <rect x="364" y="238" width="288" height="150" rx="20" fill="#111827" stroke="rgba(120,255,170,.14)" />
+    <text x="388" y="272" fill="#8fdcff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="388" dy="0">OPEN GAPS</tspan>
+</text>
+    <text x="388" y="324" fill="#ffcc66" font-size="34" font-weight="700" font-family="Segoe UI, Arial">
+<tspan x="388" dy="0">6</tspan>
+</text>
+    <text x="388" y="362" fill="#b8c6db" font-size="15" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="388" dy="0">Case intake, seriousness,</tspan>
+<tspan x="388" dy="18">coding, reporting, follow-</tspan>
+<tspan x="388" dy="18">up, and signal-review gaps</tspan>
+<tspan x="388" dy="18">still open.</tspan>
+</text>
+    
+    
+    <rect x="670" y="238" width="288" height="150" rx="20" fill="#111827" stroke="rgba(120,255,170,.14)" />
+    <text x="694" y="272" fill="#8fdcff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="694" dy="0">ESCALATION BLOCKS</tspan>
+</text>
+    <text x="694" y="324" fill="#ff5c7a" font-size="34" font-weight="700" font-family="Segoe UI, Arial">
+<tspan x="694" dy="0">4</tspan>
+</text>
+    <text x="694" y="362" fill="#b8c6db" font-size="15" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="694" dy="0">Four issues still block</tspan>
+<tspan x="694" dy="18">clean escalation or</tspan>
+<tspan x="694" dy="18">committee closure.</tspan>
+</text>
+    
+    
+    <rect x="976" y="238" width="366" height="150" rx="20" fill="#111827" stroke="rgba(120,255,170,.14)" />
+    <text x="1000" y="272" fill="#8fdcff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="1000" dy="0">LEAD RECOMMENDATION</tspan>
+</text>
+    <text x="1000" y="324" fill="#37ff8b" font-size="34" font-weight="700" font-family="Segoe UI, Arial">
+<tspan x="1000" dy="0">Repair intake and reporting evidence</tspan>
+</text>
+    <text x="1000" y="362" fill="#b8c6db" font-size="15" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="1000" dy="0">Do not clear the hepatic</tspan>
+<tspan x="1000" dy="18">signal packet until</tspan>
+<tspan x="1000" dy="18">aggregate reporting evidence</tspan>
+<tspan x="1000" dy="18">and named signal actions</tspan>
+<tspan x="1000" dy="18">recover.</tspan>
+</text>
+    
+
+    
+    <rect x="58" y="420" width="614" height="356" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="84" y="454" fill="#19c7ff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="84" dy="0">CASE ROUTING</tspan>
+</text>
+    <text x="84" y="504" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="84" dy="0">The riskiest safety gaps stay</tspan>
+<tspan x="84" dy="35">visible first.</tspan>
+</text>
+    <text x="84" y="556" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="84" dy="0">Case-intake holes, seriousness drift, coding</tspan>
+<tspan x="84" dy="20">inconsistencies, and missing literature evidence</tspan>
+<tspan x="84" dy="20">stay tied to their owners so the queue is readable</tspan>
+<tspan x="84" dy="20">before committee closure.</tspan>
+</text>
+    
+    <rect x="708" y="420" width="634" height="356" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="734" y="454" fill="#37ff8b" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="734" dy="0">SAFETY POSTURE</tspan>
+</text>
+    <text x="734" y="506" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="734" dy="0">What must close before</tspan>
+<tspan x="734" dy="35">the next signal review</tspan>
+</text>
+    <circle cx="744" cy="574" r="5" fill="#37ff8b" />
+<text x="760" y="580" fill="#e9f3ff" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="760" dy="0">The intake packet still lacks a confirmed onset date and one</tspan>
+<tspan x="760" dy="20">seriousness rationale for a hospitalized case.</tspan>
+</text>
+<circle cx="744" cy="628" r="5" fill="#37ff8b" />
+<text x="760" y="634" fill="#e9f3ff" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="760" dy="0">The hepatic signal packet still depends on a missing locked case-set</tspan>
+<tspan x="760" dy="20">export and a literature-review addendum.</tspan>
+</text>
+<circle cx="744" cy="682" r="5" fill="#37ff8b" />
+<text x="760" y="688" fill="#e9f3ff" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="760" dy="0">Two pediatric follow-up packets still need dechallenge outcome</tspan>
+<tspan x="760" dy="20">confirmation before the next committee cycle.</tspan>
+</text>
+    
+    </svg>

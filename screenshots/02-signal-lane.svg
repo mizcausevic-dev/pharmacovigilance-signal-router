@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+    <rect width="1400" height="860" fill="#070a0f"/>
+    <rect x="24" y="24" width="1352" height="812" rx="30" fill="#0a1426" stroke="rgba(120,255,170,.18)"/>
+    <rect x="58" y="58" width="1284" height="152" rx="26" fill="#0b1220" stroke="rgba(120,255,170,.12)"/>
+    <text x="94" y="96" fill="#37ff8b" font-size="13" font-weight="700" font-family="Consolas, monospace">
+<tspan x="94" dy="0">SIGNAL LANE</tspan>
+</text>
+    <text x="94" y="146" fill="#f5f7ff" font-size="34" font-weight="700" font-family="Georgia, serif">
+<tspan x="94" dy="0">Each lane keeps owner, safety focus,</tspan>
+<tspan x="94" dy="42">and next action visible.</tspan>
+</text>
+    <text x="94" y="194" fill="#b8c6db" font-size="18" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="94" dy="0">Case intake, medical review, follow-up, and aggregate reporting lanes stay separated cleanly so</tspan>
+<tspan x="94" dy="22">safety routing does not collapse into one noisy queue.</tspan>
+</text>
+    
+    
+    <rect x="58" y="238" width="620" height="250" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="84" y="272" fill="#19c7ff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="84" dy="0">CASE INTAKE LANE</tspan>
+</text>
+    <text x="84" y="322" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="84" dy="0">Serious-case completeness and</tspan>
+<tspan x="84" dy="35">intake discipline</tspan>
+</text>
+    <text x="84" y="374" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="84" dy="0">Reporter traceability, suspect product</tspan>
+<tspan x="84" dy="20">attribution, seriousness signals, and ready-for-</tspan>
+<tspan x="84" dy="20">review intake packets stay grouped under Safety</tspan>
+<tspan x="84" dy="20">Operations ownership.</tspan>
+</text>
+    
+    
+    <rect x="708" y="238" width="634" height="250" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="734" y="272" fill="#ffcc66" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="734" dy="0">MEDICAL REVIEW LANE</tspan>
+</text>
+    <text x="734" y="322" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="734" dy="0">Seriousness review and MedDRA</tspan>
+<tspan x="734" dy="35">coding posture</tspan>
+</text>
+    <text x="734" y="374" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="734" dy="0">Medical review evidence, hospitalization criteria,</tspan>
+<tspan x="734" dy="20">coding consistency, and downstream signal</tspan>
+<tspan x="734" dy="20">dependencies stay visible before another committee</tspan>
+<tspan x="734" dy="20">cycle.</tspan>
+</text>
+    
+    
+    <rect x="58" y="520" width="620" height="256" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="84" y="554" fill="#b88cff" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="84" dy="0">FOLLOW-UP LANE</tspan>
+</text>
+    <text x="84" y="604" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="84" dy="0">Reporter closure and affiliate</tspan>
+<tspan x="84" dy="35">handoff timing</tspan>
+</text>
+    <text x="84" y="656" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="84" dy="0">Open follow-up questions stay tied to Patient</tspan>
+<tspan x="84" dy="20">Safety review pressure before the next escalation</tspan>
+<tspan x="84" dy="20">window.</tspan>
+</text>
+    
+    
+    <rect x="708" y="520" width="634" height="256" rx="22" fill="#0b1220" stroke="rgba(120,255,170,.18)" />
+    <text x="734" y="554" fill="#37ff8b" font-size="11" font-weight="700" font-family="Consolas, monospace">
+<tspan x="734" dy="0">REPORTING LANE</tspan>
+</text>
+    <text x="734" y="604" fill="#f5f7ff" font-size="28" font-weight="700" font-family="Georgia, serif">
+<tspan x="734" dy="0">Aggregate reporting and signal</tspan>
+<tspan x="734" dy="35">action continuity</tspan>
+</text>
+    <text x="734" y="656" fill="#b8c6db" font-size="16" font-weight="400" font-family="Inter,Segoe UI,Arial">
+<tspan x="734" dy="0">Periodic reporting evidence, literature rationale,</tspan>
+<tspan x="734" dy="20">and named action ownership provide the final</tspan>
+<tspan x="734" dy="20">committee-safe gate.</tspan>
+</text>
+    
+    
+    </svg>

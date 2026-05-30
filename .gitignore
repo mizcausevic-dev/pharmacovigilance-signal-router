@@ -1,0 +1,7 @@
+bin/
+obj/
+site/
+.vs/
+TestResults/
+coverage/
+*.user
