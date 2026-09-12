@@ -1,7 +1,21 @@
 name: Deploy to safety.kineticgain.com
 
-# .NET 8 prerender → site/ → Hostinger FTP at /safety/
-# Replaces GitHub Pages (pages.yml.disabled). Same FTP_SERVER/FTP_USERNAME/FTP_PASSWORD secrets.
+# .NET 8 prerender -> site/ -> Hostinger via SSH-key SFTP at /safety/.
+#
+# Migrated from FTP (port 21) to SSH-key SFTP (port 65002) 2026-09-12.
+# Hostinger's WAF blocks GitHub-runner IPs on an IP-reputation basis, not a
+# protocol basis: nc to port 21 connects but the actual FTP login stalls,
+# and the same is true of port 65002 on a bad-reputation runner IP. This
+# migration does not make CI deploys reliable on every run, it matches the
+# rest of the estate's pattern (kinetic-gain-suite-landing, kineticgain-com-apex,
+# ai-evidence-format-landing all hit the same WAF roulette). scripts/local-sftp-deploy.sh
+# is the guaranteed escape hatch: it runs from a local, non-GitHub IP and
+# bypasses the WAF entirely. Use it directly when this workflow fails on the
+# WAF, not by retrying CI in a loop.
+#
+# Same deploy_guard.py preflight/verify pattern as the local script: an
+# allowlist of web-servable extensions before upload, and a check that the
+# live host isn't serving something it shouldn't after.
 
 on:
   push:
@@ -23,7 +37,7 @@ concurrency:
 
 jobs:
   build-deploy:
-    name: Build + FTP-sync to safety.kineticgain.com
+    name: Build + SSH-sync to safety.kineticgain.com
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -45,16 +59,41 @@ jobs:
           test -f site/index.html || (echo "FAIL: site/index.html missing" && exit 1)
           ls -lah site | head -10
 
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Preflight guard (web-servable allowlist)
+        run: python3 scripts/deploy_guard.py --preflight site
+
+      - name: Load SSH key into ssh-agent (webfactory)
+        uses: webfactory/ssh-agent@dc588b651fe13675774614f8e6a936a468676387  # v0.9.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          protocol: ftps   # FTPS, not cleartext ftp (action default)
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./site/
-          server-dir: /safety/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Seed known_hosts for Hostinger:65002
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          HOST="${FTP_HOST#ftp://}"; HOST="${HOST#sftp://}"; HOST="${HOST%/}"
+          ssh-keyscan -p 65002 -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
+          echo "known_hosts seeded for $HOST:65002"
+
+      - name: SSH-Deploy to /safety/ via tar | ssh
+        timeout-minutes: 8
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+        run: |
+          set -euo pipefail
+          HOST="${FTP_HOST#ftp://}"; HOST="${HOST#sftp://}"; HOST="${HOST%/}"
+          cd site
+          tar -czf - . | \
+          ssh -o StrictHostKeyChecking=accept-new \
+              -o ConnectTimeout=30 \
+              -o ServerAliveInterval=15 \
+              -p 65002 \
+              "$FTP_USER@$HOST" \
+              'cd domains/kineticgain.com/public_html/safety/ && tar -xzf - && echo "DEPLOY_EXTRACTED"'
+          echo "SSH deploy complete."
+
+      - name: Verify guard (nothing server-side is publicly reachable)
+        run: python3 scripts/deploy_guard.py --verify https://safety.kineticgain.com
