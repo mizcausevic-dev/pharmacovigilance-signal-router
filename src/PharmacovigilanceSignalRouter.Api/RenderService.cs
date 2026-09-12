@@ -114,10 +114,22 @@ public static class RenderService
         <section class="section">
           <div class="sh"><h2>Verification</h2><div class="note">operator-safe claims only</div></div>
           <div class="stack">
-            {{VerificationCard("This repo uses synthetic pharmacovigilance evidence only; no patient-identifiable, tenant, or sponsor-confidential safety data is published.")}}
-            {{VerificationCard("The control plane is rooted in case intake, seriousness review, MedDRA coding, follow-up closure, aggregate reporting, and signal committee readiness.")}}
-            {{VerificationCard("This is a biotech / diagnostics operator surface, not a compliance-overclaim page.")}}
-            {{VerificationCard("Hosted preview is planned; embedded module delivery is available by engagement.")}}
+            {{VerificationCard(
+                "This repo uses synthetic pharmacovigilance evidence only; no patient-identifiable, tenant, or sponsor-confidential safety data is published.",
+                "No patient-identifiable, clinician, or sponsor-confidential safety data appears anywhere in this repo or its public API."
+            )}}
+            {{VerificationCard(
+                "The control plane is rooted in case intake, seriousness review, MedDRA coding, follow-up closure, aggregate reporting, and signal committee readiness.",
+                "Every row in the Signal Lane and Case Routing tables maps to a named pharmacovigilance workflow stage, not a generic status label."
+            )}}
+            {{VerificationCard(
+                "This is a biotech / diagnostics operator surface, not a compliance-overclaim page.",
+                "No claim of GVP, FDA, EMA, or pharmacovigilance compliance is made anywhere on this site."
+            )}}
+            {{VerificationCard(
+                "Hosted preview is planned; embedded module delivery is available by engagement.",
+                "The commercial path is stated once, on the Overview page, not repeated as a call to action on every route."
+            )}}
           </div>
         </section>
         """
@@ -128,11 +140,24 @@ public static class RenderService
         "/docs",
         $$"""
         <section class="section">
-          <div class="sh"><h2>Docs</h2><div class="note">routes · runbook · api</div></div>
+          <div class="sh"><h2>Proof you can run</h2><div class="note">checkable claim, exact command</div></div>
+          <div class="stack">
+            <div class="src"><div class="src-name">tests pass</div><div class="src-tit"><code>dotnet test</code></div><p>Runs the full xUnit suite against the analysis and render services.</p></div>
+            <div class="src"><div class="src-name">same data, no server</div><div class="src-tit"><code>dotnet run --project src/PharmacovigilanceSignalRouter.Api -- --demo</code></div><p>Prints the identical safety-posture payload the public site renders, straight to the console.</p></div>
+            <div class="src"><div class="src-name">rebuild the static site</div><div class="src-tit"><code>dotnet run --project src/PharmacovigilanceSignalRouter.Api -- --prerender</code></div><p>Regenerates every route in <code>site/</code> from the same source this page is built from.</p></div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="sh"><h2>Routes and API</h2><div class="note">what's public</div></div>
           <div class="stack">
             <div class="src"><div class="src-name">routes</div><div class="src-tit">Public proof surface</div><p><code>/</code>, <code>/signal-lane</code>, <code>/case-routing</code>, <code>/safety-posture</code>, <code>/verification</code>, <code>/docs</code></p></div>
             <div class="src"><div class="src-name">api</div><div class="src-tit">Structured payloads</div><p><code>/api/dashboard/summary</code>, <code>/api/signal-lane</code>, <code>/api/case-routing</code>, <code>/api/safety-posture</code>, <code>/api/verification</code>, <code>/api/sample</code></p></div>
-            <div class="src"><div class="src-name">runbook</div><div class="src-tit">Local execution</div><p><code>dotnet run --project src/PharmacovigilanceSignalRouter.Api -- --demo</code> prints the same safety posture used by the public proof surface.</p></div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="sh"><h2>Origin</h2><div class="note">why this repo exists</div></div>
+          <div class="stack solo">
+            <div class="src"><div class="src-name">pattern extension</div><div class="src-tit">Not a pharmacovigilance-background claim</div><p>This repo exists to show that Kinetic Gain's control-plane pattern extends cleanly into biotech and diagnostics safety operations. The primitive isn't generic "drug safety monitoring," it's incomplete case intake packets that still need seriousness rationale, MedDRA coding drift that can distort signal quality, overdue follow-up that weakens escalation, and aggregate reporting a committee can actually trust. Full origin note in the repo's <code>docs/ORIGIN.md</code>.</p></div>
           </div>
         </section>
         """
@@ -147,8 +172,8 @@ public static class RenderService
         sample = SampleData.Payload
     }, JsonOptions);
 
-    private static string VerificationCard(string title) =>
-        $$"""<div class="src"><div class="src-name">verification</div><div class="src-tit">{{title}}</div><p>This lane keeps evidence, routing pressure, and commercial framing honest.</p></div>""";
+    private static string VerificationCard(string title, string closing) =>
+        $$"""<div class="src"><div class="src-name">verification</div><div class="src-tit">{{title}}</div><p>{{closing}}</p></div>""";
 
     private static string Metric(string value, string label, string help, string tone) =>
         $$"""<div class="kpi {{tone}}"><div class="v">{{value}}</div><div class="lbl">{{label}}</div><div class="h">{{help}}</div></div>""";
@@ -189,6 +214,22 @@ public static class RenderService
                 ? $"""<a class="navchip active" href="{item.Href}">{item.Label}</a>"""
                 : $"""<a class="navchip" href="{item.Href}">{item.Label}</a>"""));
 
+        // The commercial pitch and "why this exists" framing live once, on
+        // Overview. Every other route drops the sidebar entirely instead of
+        // re-reading it, see docs/ORIGIN.md and the CHANGELOG for why.
+        var isHome = active == "/";
+        var herorowClass = isHome ? "herorow" : "herorow solo";
+        var asideHtml = isHome
+            ? """
+              <aside class="side">
+                <div class="bluf"><div class="lbl">Commercial front door</div><p><strong>Safety-signal routing, evidence posture, and review-safe board operations for biotech teams.</strong><br />The free surface is buyer-readable proof; the commercial path is an embedded safety-signal router for regulated pharmacovigilance workflows.</p></div>
+                <div class="corr"><div class="lbl">Proof layer</div><p><strong>.NET API + static operator shell.</strong><br />The repo models intake packets, coding drift, follow-up pressure, reporting evidence, and committee readiness without pretending to be a live tenant integration.</p></div>
+                <div class="corr"><div class="lbl">Why it matters</div><p>Drug-safety teams need signal posture in one lane, not scattered across inboxes, spreadsheets, and committee decks.</p></div>
+                <div class="bluf"><div class="lbl">What this is, and isn't</div><p>A pattern-extension proof: it shows the Kinetic Gain control-plane model applied to pharmacovigilance workflows. It is not a claim of GVP, FDA, or EMA compliance, and not an assertion of pharmacovigilance domain background. See <a href="/docs">Docs</a> for the full origin note.</p></div>
+              </aside>
+              """
+            : "";
+
         return $$$"""
         <!DOCTYPE html>
         <html lang="en">
@@ -200,14 +241,14 @@ public static class RenderService
             :root{--bg:#070a0f;--panel:#0b1220;--line:rgba(120,255,170,.18);--line2:rgba(120,255,170,.10);--text:#e9f3ff;--muted:rgba(233,243,255,.72);--muted2:rgba(233,243,255,.55);--bert:#37ff8b;--bert2:#19c7ff;--warn:#ffcc66;--bad:#ff5c7a;--shadow:0 18px 60px rgba(0,0,0,.55);--mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
             *{box-sizing:border-box} body{margin:0;font-family:var(--sans);color:var(--text);background:radial-gradient(1200px 600px at 20% -10%, rgba(55,255,139,.18), transparent 60%),radial-gradient(900px 520px at 90% 0%, rgba(25,199,255,.16), transparent 55%),linear-gradient(180deg,#05070c 0%,#070a0f 35%,#05070c 100%)}
             .wrap{max-width:1280px;margin:0 auto;padding:24px 22px 80px}.topbar{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line2);padding-bottom:14px;margin-bottom:22px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}.topbar .left{color:var(--bert)}
-            .herorow{display:grid;grid-template-columns:1.5fr .9fr;gap:18px}@media (max-width:1000px){.herorow{grid-template-columns:1fr}}
+            .herorow{display:grid;grid-template-columns:1.5fr .9fr;gap:18px}@media (max-width:1000px){.herorow{grid-template-columns:1fr}} .herorow.solo{grid-template-columns:1fr}
             .hero,.src,.pcard,.kpi,.bluf,.corr{background:linear-gradient(180deg, rgba(11,18,32,.95), rgba(8,14,26,.92));border:1px solid var(--line);box-shadow:var(--shadow)}
             .hero{border-radius:22px;padding:28px 28px 24px;border-top:2px solid var(--bert2)} .hero h1{font-size:60px;line-height:.95;margin:0 0 18px;font-weight:800}@media (max-width:700px){.hero h1{font-size:42px}} .hero p{color:var(--muted);font-size:15px;line-height:1.55;max-width:680px;margin:0 0 18px}
             .chiprow,.navrow{display:flex;flex-wrap:wrap;gap:8px}.navrow{margin-top:18px}.meta-chip,.navchip,.ppri,.st,code{font-family:var(--mono)} .meta-chip,.navchip{font-size:11px;color:var(--muted);padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(6,10,18,.4);text-decoration:none}.navchip.active{color:#071017;background:linear-gradient(135deg,var(--bert),var(--bert2));font-weight:700}
             .side{display:flex;flex-direction:column;gap:14px}.bluf,.corr{border-radius:14px;padding:16px 18px}.bluf{border-left:4px solid var(--warn)}.corr{border-left:4px solid var(--bert)}.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase}.bluf .lbl{color:var(--warn)} .corr .lbl{color:var(--bert)} .bluf p,.corr p,.src p,.pcard .pdesc,.kpi .h{color:var(--muted);line-height:1.55}
             .section{margin-top:34px}.sh{display:flex;justify-content:space-between;gap:14px;padding-bottom:10px;border-bottom:1px solid var(--line2);margin-bottom:14px}.sh h2{margin:0;font-size:24px;font-weight:600}.sh .note{font-family:var(--mono);font-size:11px;color:var(--muted2);letter-spacing:.16em;text-transform:uppercase}
             .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}@media (max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}}@media (max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}} .kpi{border-radius:14px;padding:14px 14px 12px}.kpi .v{font-size:26px;font-weight:600}.kpi .lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}.cyan .v{color:var(--bert2)} .green .v{color:var(--bert)} .plum .v{color:#b88cff} .amber .v,.yellow{color:var(--warn)} .red .v,.red{color:var(--bad)}
-            .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media (max-width:1100px){.stack{grid-template-columns:repeat(2,1fr)}}@media (max-width:640px){.stack{grid-template-columns:1fr}} .src{border-radius:16px;padding:16px}.src-name{font-family:var(--mono);font-size:11px;color:var(--bert);letter-spacing:.2em;text-transform:uppercase}.src-tit{margin:8px 0 6px;font-size:17px;font-weight:600}
+            .stack{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media (max-width:1100px){.stack{grid-template-columns:repeat(2,1fr)}}@media (max-width:640px){.stack{grid-template-columns:1fr}} .stack.solo{grid-template-columns:1fr} .src{border-radius:16px;padding:16px}.src-name{font-family:var(--mono);font-size:11px;color:var(--bert);letter-spacing:.2em;text-transform:uppercase}.src-tit{margin:8px 0 6px;font-size:17px;font-weight:600}
             .ttbl{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:14px;overflow:hidden}.ttbl th,.ttbl td{padding:13px 14px;text-align:left;font-size:13.5px;vertical-align:top}.ttbl thead th{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);border-bottom:1px solid var(--line);background:rgba(11,18,32,.5)}.ttbl td,.ttbl td *{color:var(--muted)}.ttbl b{color:var(--text)}
             .board{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media (max-width:1000px){.board{grid-template-columns:1fr}} .pcard{border-radius:16px;padding:18px 20px;display:flex;flex-direction:column}.ptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.pnum{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--bert)}.ppri{font-size:10px;padding:5px 10px;border-radius:999px;border:1px solid var(--line);color:var(--bert);letter-spacing:.14em;background:rgba(55,255,139,.06)}.pcard h3{margin:6px 0 8px;font-size:19px}.check{list-style:none;padding:0;margin:0 0 14px}.check li{display:grid;grid-template-columns:18px 1fr;gap:10px;padding:6px 0;font-size:13.5px;color:var(--muted)}.check li:before{content:"";width:14px;height:14px;border:1px solid var(--line);border-radius:3px;background:rgba(6,10,18,.4);margin-top:3px}
             .st{font-size:10px;padding:4px 9px;border-radius:6px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;display:inline-block}.st.green{color:var(--bert)}.st.yellow{color:var(--warn)}.st.red{color:var(--bad)}.st.info{color:var(--bert2)}
@@ -220,7 +261,7 @@ public static class RenderService
               <div class="left">Kinetic Gain · Pharmacovigilance Signal Router</div>
               <div>synthetic safety signals · no patient-identifiable or sponsor-confidential data</div>
             </div>
-            <div class="herorow">
+            <div class="{{{herorowClass}}}">
               <section class="hero">
                 <div class="chiprow">
                   <span class="meta-chip">Biotech / diagnostics safety routing proof</span>
@@ -231,11 +272,7 @@ public static class RenderService
                 <p>This control plane turns synthetic pharmacovigilance exports into one review surface: case completeness, seriousness assessment, MedDRA coding, follow-up closure, aggregate reporting evidence, and named signal actions before committee decisions harden around weak packets.</p>
                 <div class="navrow">{{{navHtml}}}</div>
               </section>
-              <aside class="side">
-                <div class="bluf"><div class="lbl">Commercial front door</div><p><strong>Safety-signal routing, evidence posture, and review-safe board operations for biotech teams.</strong><br />The free surface is buyer-readable proof; the commercial path is an embedded safety-signal router for regulated pharmacovigilance workflows.</p></div>
-                <div class="corr"><div class="lbl">Proof layer</div><p><strong>.NET API + static operator shell.</strong><br />The repo models intake packets, coding drift, follow-up pressure, reporting evidence, and committee readiness without pretending to be a live tenant integration.</p></div>
-                <div class="corr"><div class="lbl">Why it matters</div><p>Drug-safety teams need signal posture in one lane, not scattered across inboxes, spreadsheets, and committee decks.</p></div>
-              </aside>
+              {{{asideHtml}}}
             </div>
             {{{body}}}
             <div class="footer">
